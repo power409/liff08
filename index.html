@@ -1,56 +1,91 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
+<html>
 <head>
-  <title>กำลังเข้าสู่ Form</title>
-  <style>
-    .centerScreen {
-      margin-top: 20;
-      margin-right: auto;
-      margin-bottom: 20;
-      margin-left: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>LIFF - LINE  Front-end Framework</title>
 </head>
-
-<body style="background-color: powderblue;">
-  <div class="centerScreen">
-    <center>
-      <img src="https://drive.google.com/uc?id=1mEyShWSX9rPf4klIDeMTlHAOc4BsySFK" height="200px" , width="200px" />
-      <h1>
-        กำลังเข้าสู่ Google Form กรุณารอซักครู่
-      </h1>
-    </center>
-  </div>
-</body>
-<footer>
-  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-  <script>
-    /// Config Your LIFF ID Here
-    const liffId = "1656309387-v6aQGGVW";
-    /// Config Your LIFF ID Here
-    liff.ready
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          return liff.getProfile();
-        } else {
-          liff.login({
-            redirectUri: "https://power409.github.io/liff08/",
-          });
-        }
-      })
-      .then((profile) => {
-        window.location.replace(
-          `https://docs.google.com/forms/d/e/1FAIpQLSco9yw2hqnxzYDh8Gl6bnOSkmHg4tLJwAd4H0s0gi5Ft3itpg/viewform?usp=pp_url&entry.2124403451=${profile.userId}&entry.2002242061=${profile.displayName}&entry.1815662956=${profile.pictureUrl}&entry.1504671122=${profile.statusMessage}`
-        );
-      });
-    liff.init(
+<body>
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.5.0/sdk.js"></script>
+    <script>
+        async function main() {
+            await liff.init({ liffId:"1656296520-PM5W47yg" })
+            await liff.shareTargetPicker([
+                {
+                    type: "flex",
+                    altText: "Flex Message from Share Targt Picker",
+                    contents: {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
       {
-        liffId: liffId,
-      },
-      () => {},
-      (err) => {
-        window.alert(err);
+        "type": "image",
+        "size": "full",
+        "url": "https://lh3.googleusercontent.com/UIPfihAGGIjN97-ddZ_YnFdFYhp28brQRkD8-EJcJoOP7Hofbd5esYGVtlRWYyi1I4skeHbUH-pUEu5V=w1080-h608-p-no-v0",
+        "aspectMode": "cover",
+        "aspectRatio": "16:9",
+        "action": {
+          "type": "uri",
+          "label": "action",
+          "uri": "https://kongsalak.com/member?id=3ciugq"
+        }
       }
-    );
-  </script>
-</footer>
+    ],
+    "paddingAll": "0px"
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "** ไม่ต้องเสี่ยงโควิด ซื้อออนไลน์ง่ายๆ",
+        "size": "sm"
+      },
+      {
+        "type": "text",
+        "text": "** ถูกรางวัล!!  รับเงินใน 30 นาที ไม่หัก 2%",
+        "size": "sm"
+      },
+      {
+        "type": "text",
+        "text": "** 80 บาททุกใบ เลือกเลขเองได้",
+        "size": "sm"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "เลือกเลขที่คุณต้องการ",
+          "uri": "https://kongsalak.com/member?id=3ciugq"
+        },
+        "style": "link",
+        "height": "sm"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "แชร์ให้เพื่อน",
+          "uri": "https://liff.line.me/1656315395-21bJlj1k"
+        },
+        "style": "primary",
+        "height": "sm"
+      }
+    ]
+  }
+}
+
+                }
+            ])
+            liff.closeWindow()
+        }
+        main()
+    </script>
+    
+
+</body>
+
+</html>
